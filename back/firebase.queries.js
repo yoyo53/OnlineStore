@@ -1,17 +1,19 @@
 const { bucket } = require('./firebase.connection');
 
-function uploadFile(request, response) {
-    bucket.file(request.file.originalname).save(request.file.buffer, { contentType: request.file.mimetype }, (error) => {
-        if (error) { throw error; }
-        response.status(200).send(`${request.file.originalname} uploaded to bucket.`);
-    })
+async function uploadFile(request, filepath) {
+    await bucket.file(filepath).save(request.file.buffer, { contentType: request.file.mimetype })
 }
 
-function getFile(request, response) {
-    bucket.file(request.params.filepath).createReadStream().pipe(response);
+async function deleteFile(filepath) {
+    await bucket.file(filepath).delete()
+}
+
+function getFile(filepath, response) {
+    bucket.file(filepath).createReadStream().pipe(response);
 }
 
 module.exports = {
     uploadFile,
+    deleteFile,
     getFile
 }

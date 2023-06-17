@@ -1,38 +1,28 @@
 const { pool } = require('./db.connection')
 
-function getUsers(request, response) {
-    pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
-        if (error) { throw error }
-        response.status(200).json(results.rows)
-    })
-  }
-  
-function getUserById(request, response) {
-    pool.query('SELECT * FROM users WHERE id = $1', [request.params.id], (error, results) => {
-        if (error) { throw error }
-        response.status(200).json(results.rows)
-    })
+async function getUsers() {
+    const query = await pool.query('SELECT * FROM users ORDER BY id ASC')
+    return query.rows
 }
 
-function createUser(request, response) {
-    pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [request.body.name, request.body.email], (error, results) => {
-        if (error) { throw error }
-        response.status(201).send(`User added with ID: ${results.insertId}`)
-    })
+async function getUserById(id) {
+    const query = await pool.query('SELECT * FROM users WHERE id = $1', [id])
+    return query.rows
 }
 
-function updateUser(request, response) {
-    pool.query('UPDATE users SET name = $1, email = $2 WHERE id = $3', [request.body.name, request.body.email, request.params.id], (error, results) => {
-        if (error) { throw error }
-        response.status(200).send(`User modified with ID: ${request.params.id}`)
-    })
+async function createUser(name, email) {
+    const query = await pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email])
+    return query.insertId
 }
 
-function deleteUser(request, response) {
-    pool.query('DELETE FROM users WHERE id = $1', [request.params.id], (error, results) => {
-        if (error) { throw error }
-        response.status(200).send(`User deleted with ID: ${request.params.id}`)
-    })
+async function updateUser(name, email, id) {
+    await pool.query('UPDATE users SET name = $1, email = $2 WHERE id = $3', [name, email, id])
+    return id
+}
+
+async function deleteUser(id) {
+    await pool.query('DELETE FROM users WHERE id = $1', [id])
+    return id
 }
 
 module.exports = {
