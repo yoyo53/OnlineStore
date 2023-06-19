@@ -1,4 +1,4 @@
-const userRepo = require('../models/users.model');
+const userRepo = require('../repositories/users.repository');
 
 async function userRootAction(request, response) {
 
