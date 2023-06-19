@@ -3,9 +3,9 @@ const router = express.Router();
 const imageRepo = require('../utils/images.repository');
 
 
-router.get(":filepath", imageGetAction);
-router.post(":filepath", imageUploadAction);
-router.delete(":filepath", imageDelAction);
+router.get("/:filepath", imageGetAction);
+router.post("/:filepath", imageUploadAction);
+router.delete("/:filepath", imageDelAction);
 
 async function imageGetAction(request, response) {
     
