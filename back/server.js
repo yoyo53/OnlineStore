@@ -25,8 +25,8 @@ app.get('/', (req, res) => {
   res.status(200).send('API Water Warriors avec PostgreSQL, Firebase et Node.js')
 })
 
-app.use('/users', require('./routes/users.routes'))
-app.use('/images', require('./routes/images.routes'))
+app.use('/users', require('./controllers/users.routes'))
+app.use('/images', require('./controllers/images.routes'))
 
 
 
