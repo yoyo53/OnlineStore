@@ -1,4 +1,4 @@
-const { pool } = require('./db.connection')
+const { pool } = require('../utils/db.connection')
 
 async function getUsers() {
     const query = await pool.query('SELECT * FROM users ORDER BY id ASC')
