@@ -1,4 +1,4 @@
-const imageRepo = require('../models/images.model');
+const imageRepo = require('../repositories/images.repository');
 
 async function imageGetAction(request, response) {
     
