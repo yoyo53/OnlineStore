@@ -1,4 +1,4 @@
-const { bucket } = require('./firebase.connection');
+const { bucket } = require('../utils/firebase.connection');
 
 async function uploadFile(request, filepath) {
     await bucket.file(filepath).save(request.file.buffer, { contentType: request.file.mimetype })

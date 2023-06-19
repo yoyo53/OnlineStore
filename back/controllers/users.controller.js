@@ -1,14 +1,4 @@
-const express = require('express');
-const router = express.Router();
-const userRepo = require('../utils/users.repository');
-
-router.get("/", userRootAction);
-router.get("/list", userListAction);
-router.get("/:id", userShowAction);
-router.post("/edit/:id", userEditAction);
-router.get("/del/:id", userDelAction);
-router.post("/create", userCreateAction);
-
+const userRepo = require('../models/users.model');
 
 async function userRootAction(request, response) {
 
@@ -55,5 +45,11 @@ async function userCreateAction(request, response) {
     response.status(200).send(JSON.stringify("Created"));
 }
 
-module.exports = router;
-
+module.exports = {
+    userRootAction,
+    userListAction,
+    userShowAction,
+    userDelAction,
+    userEditAction,
+    userCreateAction
+};
