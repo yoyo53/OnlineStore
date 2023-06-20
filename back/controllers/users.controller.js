@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid');
 async function createUserAction(request, response) {
     const user = await userRepo.getUserByEmail(request.body.email);
     if (user == null) {
-        const id = await userRepo.createUser(request.body);
+        const id = await userRepo.createUser(request.body.email, request.body.password, request.body.firstname, request.body.lastname, request.body.street_nbr, request.body.street, request.body.postcode, request.body.city, request.body.country);
         console.log('[',request.ip,'] CREATED User : ', id);
         response.status(200).send(JSON.stringify(await userRepo.getUserById(id)));
     }
