@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import PageAccueil from '../views/PageAccueil.vue'
 import PageAccueilnotlog from '../views/PageAccueilnotlog.vue'
 import SignIn from '../views/SignIn.vue'
@@ -19,7 +18,7 @@ const router = createRouter({
     },
     {
       path: '/signIn',
-      name: 'signim',
+      name: 'signin',
       component: SignIn
     },
     {

@@ -124,7 +124,7 @@
                     />
                   </svg>
                   <span class="sr-only"> Search </span>
-                  <a class="btnsignin" href="SignIn.vue">Sign In</a>
+                  <button class="btnsignin" @click="redirectToPageSignIn">Sign In</button>
                   <button class="btnsignup" @click="redirectToPageSignUp">Sign Up</button>
                 </a>
               </span>
@@ -248,8 +248,6 @@
   
   </template>
   <script>
-import SignIn from './SignIn.vue';
-
 
   export default {
     name: "PageAccueilnotlog",
@@ -262,11 +260,11 @@ import SignIn from './SignIn.vue';
     methods: {
     redirectToPageSignIn() {
       // Rediriger vers une autre page
-      this.$router.push(SignUp);
+      this.$router.push('signIn');
     },
     redirectToPageSignUp() {
       // Rediriger vers une autre page
-      this.$router.push('SignUp.vue');
+      this.$router.push('signUp');
     }
   }
   };

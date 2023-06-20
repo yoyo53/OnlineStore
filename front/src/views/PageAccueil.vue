@@ -246,7 +246,6 @@
   
   </template>
   <script>
-  /* Code generated with AutoHTML Plugin for Figma */
   export default {
     name: "PageAccueil",
     components: {},
