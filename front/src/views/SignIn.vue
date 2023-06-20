@@ -103,29 +103,6 @@
                   <span class="sr-only"> Account </span>
                 </a>
               </span>
-  
-              <span class="hidden sm:block">
-                <a
-                  href="/search"
-                  class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700"
-                >
-                  <svg
-                    class="h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                  <span class="sr-only"> Search </span>
-                </a>
-              </span>
             </div>
           </div>
         </div>
@@ -133,20 +110,14 @@
     </header>
     <section class="bg-white">
         <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
-            <aside
-            class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6"
-            >
-            <img
-                alt="Pattern"
-                src="..\assets\Group 2.png"
-                class="img"
-            />
-            </aside>
-
+            
+            
+       
             <main
             class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6"
             >
             <div class="form">
+
                 <div class="max-w-xl lg:max-w-3xl mb-60 ml-10 mt-10">
                     <a class="block text-blue-600" href="/">
                     <span class="sr-only">Home</span>
@@ -205,14 +176,20 @@
                         <a href="../views/SignUp.vue" class="text-gray-700 underline">Sign Up</a>.
                         </p>
                     </div>
+                    
                     </form>
+                    <img
+                      alt="Pattern"
+                      src="..\assets\Group 2.png"
+                      class="img"
+                    />
                 </div>
             </div>
             </main>
         </div>
     </section>
     <footer class="fixed bottom-0 left-0 w-full bg-[#007EA7]">
-      <div class="mx-auto max-w-screen-xl px-4 py-4 sm:px-6 lg:px-0 ">
+      <div class="mx-auto max-w-screen-xl px-4 py-2 sm:px-6 lg:px-0 ">
         <div class="sm:flex sm:items-center sm:justify-between">
           <div class="flex justify-center text-teal-600 sm:justify-start">
             <img src="..\assets\logo-white.png">
@@ -253,18 +230,13 @@ export default {
 
 .img{ 
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    object-fit: cover;
-    margin-left: 7.8%;
-    margin-top: 7.9%;
+    margin-left: 100.1%;
+    margin-top: -69.5%;
     position: relative;
-    height: 66.6667%;
+    height: 667px;
+    width: 520px;
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
     border-radius: 0px 23px 24px 0px;
-
 }
 
 </style>
