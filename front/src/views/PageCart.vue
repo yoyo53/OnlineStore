@@ -13,7 +13,7 @@
                 <img
                   src="../assets/image 12.png"
                   alt=""
-                  class="h-16 w-16 rounded object-cover"
+                  class="h-28 w-28 rounded object-cover"
                 />
 
                 <div>
@@ -70,7 +70,7 @@
                 <img
                   src="../assets/image 15.png"
                   alt=""
-                  class="h-16 w-16 rounded object-cover"
+                  class="h-28 w-28 rounded object-cover"
                 />
 
                 <div>
@@ -127,7 +127,7 @@
                 <img
                   src="../assets/image 14.png"
                   alt=""
-                  class="h-16 w-16 rounded object-cover"
+                  class="h-28 w-28 rounded object-cover"
                 />
 
                 <div>
