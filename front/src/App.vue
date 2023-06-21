@@ -1,5 +1,5 @@
 <template>
-  <PageCart  />
+  <PageAccueil  />
 </template>
 
 <script>

@@ -28,38 +28,13 @@
           </a>
         </div>
   
-        <div class="flex flex-1 items-center justify-end gap-8">
-          <nav
-            aria-label="Global"
-            class="hidden lg:flex lg:gap-4 lg:text-xs lg:font-bold lg:uppercase lg:tracking-wide lg:text-gray-500"
-          >
-            <a
-              href="/about"
-              class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-cyan-700"
-            >
-              About
-            </a>
-            <a
-              href="/products"
-              class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-cyan-700"
-            >
-              Products
-            </a>
-  
-            <a
-              href="/contact"
-              class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-cyan-700"
-            >
-              Contact
-            </a>
-          </nav>
-  
+        <div class="flex flex-1 items-center justify-end gap-8">  
           <div class="flex items-center">
             <div class="flex items-center border-x border-blue-100">
               <span class="border-e border-blue-100">
                 <a
                   href="/cart"
-                  class="grid h-16 w-16 place-content-center border-b-4 border-transparent border-cyan-700"
+                  class="grid h-16 w-16 place-content-center border-b-4 border-cyan-700"
                 >
                   <svg
                     class="h-4 w-4"
@@ -110,7 +85,7 @@
     </header>
     <section>
       <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-        <div class="mx-auto max-w-3xl mt-10">
+        <div class="mx-auto max-w-3xl mt-0">
           <header class="text-center">
             <h1 class="text-xl font-bold text-gray-900 sm:text-3xl">Your Cart</h1>
           </header>
