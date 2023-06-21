@@ -17,7 +17,7 @@
                 />
 
                 <div>
-                  <h3 class="text-sm text-gray-900">Water Blaster</h3>
+                  <h3 class="text-xl text-gray-900">Water Blaster</h3>
 
                   <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
                     <div>
@@ -74,7 +74,7 @@
                 />
 
                 <div>
-                  <h3 class="text-sm text-gray-900">Water Gun</h3>
+                  <h3 class="text-xl text-gray-900">Water Gun</h3>
 
                   <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
                     <div>
@@ -131,7 +131,7 @@
                 />
 
                 <div>
-                  <h3 class="text-sm text-gray-900">Water Rifle</h3>
+                  <h3 class="text-xl text-gray-900">Water Rifle</h3>
 
                   <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
                     <div>
