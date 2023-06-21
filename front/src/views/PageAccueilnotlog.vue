@@ -12,86 +12,69 @@
       </div>
 
       <div class="flex flex-1 items-center justify-end gap-8">
-        <nav
-          aria-label="Global"
-          class="hidden lg:flex lg:gap-4 lg:text-xs lg:font-bold lg:uppercase lg:tracking-wide lg:text-gray-500"
-        >
-          <a
-            href="/about"
-            class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-cyan-700"
-          >
-            About
-          </a>
-          <a
-            href="/products"
-            class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-cyan-700"
-          >
-            Products
-          </a>
-
-          <a
-            href="/contact"
-            class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-cyan-700"
-          >
-            Contact
-          </a>
-        </nav>
-
-        <div class="flex items-center">
-          <div class="flex items-center border-x border-blue-100">
-            <span class="border-e border-blue-100">
-              <a
-                href="/cart"
-                class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700"
-              >
-                <svg
-                  class="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
+          
+  
+          <div class="flex items-center">
+            <div class="flex items-center border-x border-blue-100">
+                <span class="border-e border-blue-100">
+                    <div class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700">
+                         <router-link to="/" class="flex">
+                            <span class="sr-only">home</span>
+                            <img src="..\assets\home.png" alt="icon" class="icon">
+                         </router-link>
+                    </div>
+                </span>
+                <span class="border-e border-blue-100">
+                <router-link to="/cart"
+                  class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                  />
-                </svg>
-
-                <span class="sr-only">Cart</span>
-              </a>
-            </span>
-
-            <span class="border-e border-e-blue-100">
-              <a
-                href="/account"
-                class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700"
-              >
-                <svg
-                  class="h-4 w-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  <svg
+                    class="h-7 w-7"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                    />
+                  </svg>
+  
+                  <span class="sr-only">Cart</span>
+                </router-link >
+              </span>
+  
+              <span class="border-e border-e-blue-100">
+                <router-link to="/account"
+                  class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
-
-                <span class="sr-only"> Account </span>
-              </a>  
-            </span>
-            <button class="btnsignin" @click="redirectToPageSignIn">Sign In</button>
-            <button class="btnsignup" @click="redirectToPageSignUp">Sign Up</button>
+                  <svg
+                    class="h-7 w-7"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    />
+                  </svg>
+  
+                  <span class="sr-only"> Account </span>
+                </router-link >  
+              </span>
+              <router-link to="/signIn"><button class="btnsignin" >Sign In</button></router-link >
+              <router-link to="/signUp"><button class="btnsignup">Sign Up</button></router-link>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </header>
   <div class="mx-auto mt-8 max-w-xl">
     <form action="#" class="sm:flex sm:gap-4">
@@ -138,7 +121,7 @@
               </h3>
               <span>Size : 2L</span>
               <br>
-              <span>Color : Red</span>
+              <span>Color : Blue</span>
               <p class="mt-2">
                 
                 <span class="tracking-wider text-gray-900">34,99 $</span>
