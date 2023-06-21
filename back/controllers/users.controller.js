@@ -4,9 +4,8 @@ const { v4: uuidv4 } = require('uuid');
 const { hashSync, compareSync } = require('bcrypt');
 
 async function createUserAction(request, response) {
-    const user = await userRepo.getUserByEmail(request.body.email);
-    if (user == null) {
-        const hashed_password = await hashSync(request.body.password, 10);
+    if (!await userRepo.checkExistsUser(request.body.email)) {
+        const hashed_password = hashSync(request.body.password, 10);
         const id = await userRepo.createUser(request.body.email, hashed_password, request.body.firstname, request.body.lastname, request.body.street_nbr, request.body.street, request.body.postcode, request.body.city, request.body.country);
         if (id != null) {
             console.log('[',request.ip,'] CREATED User : ', id);

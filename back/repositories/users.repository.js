@@ -1,5 +1,13 @@
 const { pool } = require('../utils/db.connection')
 
+async function checkExistsUser(email) {
+    try {
+        const query = await pool.query('SELECT count(*) FROM users WHERE email = $1', [email]);
+        return query.rows[0] > 0;
+    }
+    catch {return false}
+}
+
 async function getUserByEmail(email) {
     try {
         const query = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
@@ -49,6 +57,7 @@ async function isAdminUser(id) {
 }
 
 module.exports = {
+    checkExistsUser,
     getUserByEmail,
     getUserById,
     createUser,
