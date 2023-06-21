@@ -4,6 +4,7 @@ import PageAccueilnotlog from '../views/PageAccueilnotlog.vue'
 import SignIn from '../views/SignIn.vue'
 import SignUp from '../views/SignUp.vue'
 import PageCart from '../views/PageCart.vue'
+import PageProfil from '../views/PageProfil.vue'
 
 // const router = createRouter({
 //   history: createWebHistory(import.meta.env.BASE_URL),
@@ -69,6 +70,11 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: PageCart
+  },
+  {
+    path: '/account',
+    name: 'account',
+    component: PageProfil
   },
   {
     path: '/about',
