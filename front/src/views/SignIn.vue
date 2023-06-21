@@ -24,7 +24,7 @@
                     </div>
                 </span>
                 <span class="border-e border-blue-100">
-                <router-link to="/cart"
+                <router-link to="/signIn"
                   class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700"
                 >
                   <svg
@@ -47,7 +47,7 @@
               </span>
   
               <span class="border-e border-e-blue-100">
-                <router-link to="/account"
+                <router-link to="/signIn"
                   class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700"
                 >
                   <svg
