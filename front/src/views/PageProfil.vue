@@ -54,8 +54,6 @@ body {
 }
 .txt{
   margin-top: 2%;
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 36px;
   line-height: 44px;

@@ -11,7 +11,8 @@ import SignIn from "./views/SignIn.vue";
 import SignUp from "./views/SignUp.vue";
 import PageCart from "./views/PageCart.vue";
 import PageProfil from "./views/PageProfil.vue";
-
+import PageAdminUtilisateur from "./views/PageAdminUtilisateur.vue";
+import PageAdminCommande from "./views/PageAdminCommande.vue";
 import Header from './components/header.vue';
 
 export default {
@@ -23,7 +24,9 @@ export default {
     SignIn,
     SignUp,
     PageCart,
-    PageProfil
+    PageProfil,
+    PageAdminUtilisateur,
+    PageAdminCommande
   }
 }
 </script>
