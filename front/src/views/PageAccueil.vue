@@ -150,7 +150,7 @@
         <li>
           <a href="#" class="block overflow-hidden group">
             <div class="relative aspect-w-1 aspect-h-1">
-              <img src="..\assets\image 11.png" class="object-cover w-full h-full">
+              <img src="..\assets\image_11.png" class="object-cover w-full h-full">
             </div>
 
             <div class="relative pt-3 bg-white">
@@ -170,7 +170,7 @@
         <li>
           <a href="#" class="block overflow-hidden group">
             <div class="relative aspect-w-1 aspect-h-1">
-              <img src="..\assets\image 12.png" class="object-cover w-full h-full">
+              <img src="..\assets\image_12.png" class="object-cover w-full h-full">
             </div>
 
             <div class="relative pt-3 bg-white">
@@ -190,7 +190,7 @@
         <li>
           <a href="#" class="block overflow-hidden group">
             <div class="relative aspect-w-1 aspect-h-1">
-              <img src="..\assets\image 13.png" class="object-cover w-full h-full">
+              <img src="..\assets\image_13.png" class="object-cover w-full h-full">
             </div>
 
             <div class="relative pt-3 bg-white">
@@ -209,7 +209,7 @@
         <li>
           <a href="#" class="block overflow-hidden group">
             <div class="relative aspect-w-1 aspect-h-1">
-              <img src="..\assets\image 14.png" class="object-cover w-full h-full">
+              <img src="..\assets\image_14.png" class="object-cover w-full h-full">
             </div>
 
             <div class="relative pt-3 bg-white">
