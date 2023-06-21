@@ -5,6 +5,8 @@ import SignIn from '../views/SignIn.vue'
 import SignUp from '../views/SignUp.vue'
 import PageCart from '../views/PageCart.vue'
 import PageProfil from '../views/PageProfil.vue'
+import PageAdminC from '../views/PageAdminCommande.vue'
+import PageAdminU from '../views/PageAdminUtilisateur.vue'
 
 // const router = createRouter({
 //   history: createWebHistory(import.meta.env.BASE_URL),
@@ -76,6 +78,16 @@ const routes = [
     name: 'account',
     component: PageProfil
   },
+  {
+    path: '/Commandes',
+    name: 'AdminCommande',
+    component: PageAdminC
+  },
+  {
+    path: '/Users',
+    name: 'AdminUtilisateur',
+    component: PageAdminU
+  }
 ]
 
 const router = createRouter({

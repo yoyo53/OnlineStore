@@ -4,7 +4,7 @@
         class="mx-auto flex h-16"
       >
         <div class="flex items-center gap-4">
-          <router-link to="/" class="flex">
+          <router-link to="/home" class="flex">
             <span class="sr-only">Logo</span>
             <img src="..\assets\logo-black.png" alt="logo" class="logo">
           </router-link>
@@ -17,7 +17,7 @@
             <div class="flex items-center border-x border-blue-100">
                 <span class="border-e border-blue-100">
                     <div class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700">
-                         <router-link to="/" class="flex">
+                         <router-link to="/home" class="flex">
                             <span class="sr-only">home</span>
                             <img src="..\assets\home.png" alt="icon" class="icon">
                          </router-link>
