@@ -25,4 +25,4 @@ app.get('/', (req, res) => {
 })
 
 app.use('/users', require('./routes/users.routes'))
-app.use('/images', require('./routes/images.routes'))
+app.use('/products', require('./routes/products.routes'))
