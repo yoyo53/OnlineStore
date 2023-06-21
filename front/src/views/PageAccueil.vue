@@ -363,7 +363,6 @@
 <script>
   import Header from '../components/header.vue';
 
-<<<<<<< HEAD
   export default {
     name: "PageAccueil",
     components: {Header},
@@ -385,24 +384,6 @@
   };
 </script>
 <style scoped>
-=======
-export default {
-  name: "PageAccueilnotlog",
-  components: {},
-  props: {},
-  data() {
-    // quickfix to have components available to pass as props
-    return {};
-  },
-};
-</script>
-<style scoped>
-.logo{
-  padding-top:0%;
-  width:85%;
-  margin-left: 5%;
-}
->>>>>>> e7b0f141e20962c98aff1849ec1d38bf4d0b4b5d
 
 img.object-cover {
 object-fit: cover;

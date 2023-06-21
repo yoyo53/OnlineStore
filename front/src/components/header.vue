@@ -88,4 +88,9 @@
     width:85%;
     margin-left: 5%;
   }
+  .icon{
+    width: 50%;
+    margin-left: 25%;
+
+  }
   </style>
