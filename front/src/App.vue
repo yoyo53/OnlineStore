@@ -1,7 +1,11 @@
 <template>
+<<<<<<< HEAD
 
 <router-view></router-view>
 
+=======
+  <PageAccueilnotlog  />
+>>>>>>> e7b0f141e20962c98aff1849ec1d38bf4d0b4b5d
 </template>
 
 <script>

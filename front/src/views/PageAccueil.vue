@@ -30,14 +30,18 @@
         </p>
       </header>
 
-      <ul class="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4 mt-20 -ml-60">
+      <ul class="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4 mt-20 -ml-10">
         <li>
-          <a href="#" class="block overflow-hidden group w-[400px]">
-            <div class="h-[400px] w-[400px]">
-              <img src="..\assets\image 11.png" class="w-full object-cover">
+          <a href="#" class="block overflow-hidden group w-[300px] ml-[20px] mt-10">
+            <div class="h-[400px] w-[300px]">
+              <div class="image-container">
+                <img src="..\assets\image 15.png" class="h-[350px] w-full object-cover">
+                <div class="image-overlay">
+                  <button class="add-to-cart-button">Add to Cart</button>
+                </div>
+              </div>
             </div>
-
-            <div class="relative pt-3 bg-white">
+            <div class="relative -mt-20 bg-white">
               <h3 class="text-xl text-gray-700 group-hover:underline group-hover:underline-offset-4">
                 Water Gun 
               </h3>
@@ -45,26 +49,7 @@
               <br>
               <span>Color : Red</span>
               <p class="mt-2">
-                <span class="tracking-wider text-gray-900">24,99 $</span>
-              </p>
-            </div>
-          </a>
-        </li>
-
-        <li>
-          <a href="#" class="block overflow-hidden group w-[400px] ml-20">
-            <div class="h-[400px] w-[400px]">
-              <img src="..\assets\image 12.png" class="h-[350px] w-full object-cover">
-            </div>
-
-            <div class="relative pt-3 bg-white">
-              <h3 class="text-xl text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                Water Gun 
-              </h3>
-              <span>Size : 2L</span>
-              <br>
-              <span>Color : Red</span>
-              <p class="mt-2">
+                
                 <span class="tracking-wider text-gray-900">34,99 $</span>
               </p>
             </div>
@@ -72,12 +57,16 @@
         </li>
 
         <li>
-          <a href="#" class="block overflow-hidden group w-[400px] ml-40">
-            <div class="h-[400px] w-[400px]">
-              <img src="..\assets\image 13.png" class="h-[350px] w-full object-cover">
+          <a href="#" class="block overflow-hidden group w-[300px] ml-[20px] mt-10">
+            <div class="h-[400px] w-[300px]">
+              <div class="image-container">
+                <img src="..\assets\image 12.png" class="h-[350px] w-full object-cover">
+                <div class="image-overlay">
+                  <button class="add-to-cart-button">Add to Cart</button>
+                </div>
+              </div>
             </div>
-
-            <div class="relative pt-3 bg-white">
+            <div class="relative -mt-20 bg-white">
               <h3 class="text-xl text-gray-700 group-hover:underline group-hover:underline-offset-4">
                 Water Gun 
               </h3>
@@ -92,12 +81,40 @@
           </a>
         </li>
         <li>
-          <a href="#" class="block overflow-hidden group w-[400px] ml-60">
-            <div class="h-[400px] w-[400px]">
-              <img src="..\assets\image 14.png" class="h-[350px] w-full object-cover">
+          <a href="#" class="block overflow-hidden group w-[300px] ml-[20px] mt-10">
+            <div class="h-[400px] w-[300px]">
+              <div class="image-container">
+                <img src="..\assets\image 11.png" class="h-[350px] w-full object-cover">
+                <div class="image-overlay">
+                  <button class="add-to-cart-button">Add to Cart</button>
+                </div>
+              </div>
             </div>
-
-            <div class="relative pt-3 bg-white">
+            <div class="relative -mt-20 bg-white">
+              <h3 class="text-xl text-gray-700 group-hover:underline group-hover:underline-offset-4">
+                Water Gun 
+              </h3>
+              <span>Size : 2L</span>
+              <br>
+              <span>Color : Blue</span>
+              <p class="mt-2">
+                
+                <span class="tracking-wider text-gray-900">44,99 $</span>
+              </p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="block overflow-hidden group w-[300px] ml-[20px] mt-10">
+            <div class="h-[400px] w-[300px]">
+              <div class="image-container">
+                <img src="..\assets\image 14.png" class="h-[350px] w-full object-cover">
+                <div class="image-overlay">
+                  <button class="add-to-cart-button">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="relative -mt-20 bg-white">
               <h3 class="text-xl text-gray-700 group-hover:underline group-hover:underline-offset-4">
                 Water Gun 
               </h3>
@@ -105,7 +122,8 @@
               <br>
               <span>Color : Red</span>
               <p class="mt-2">
-                <span class="tracking-wider text-gray-900">14,99 $</span>
+                
+                <span class="tracking-wider text-gray-900">34,99 $</span>
               </p>
             </div>
           </a>
@@ -320,7 +338,7 @@
           </div>
 
           <p class="line-clamp-2 sm:line-clamp-none mt-4 text-gray-500">
-            "J'ai rajouté un briquet au canon et remplacer l'eau par de l'essence, tres bon lance flamme !!"
+            "J'ai rajouté un briquet au canon et remplacer l'eau par de l'essence, très bon lance flamme !!"
           </p>
         </blockquote>
       </div>
@@ -345,6 +363,7 @@
 <script>
   import Header from '../components/header.vue';
 
+<<<<<<< HEAD
   export default {
     name: "PageAccueil",
     components: {Header},
@@ -366,6 +385,24 @@
   };
 </script>
 <style scoped>
+=======
+export default {
+  name: "PageAccueilnotlog",
+  components: {},
+  props: {},
+  data() {
+    // quickfix to have components available to pass as props
+    return {};
+  },
+};
+</script>
+<style scoped>
+.logo{
+  padding-top:0%;
+  width:85%;
+  margin-left: 5%;
+}
+>>>>>>> e7b0f141e20962c98aff1849ec1d38bf4d0b4b5d
 
 img.object-cover {
 object-fit: cover;
@@ -373,6 +410,40 @@ width: 100%;
 height: 100%;
 border-radius: 10px 10px 10px 10px;
 border: 1px solid #007EA7;
-
 }
+
+.image-container {
+  position: relative;
+  height: 300px;
+  width: 300px
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 10px;
+}
+
+.image-container:hover .image-overlay {
+  opacity: 1;
+}
+
+.add-to-cart-button {
+  padding: 12px 24px;
+  background-color: #007EA7;
+  color: #ffffff;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 </style>
