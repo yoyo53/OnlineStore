@@ -1,5 +1,13 @@
 const { pool } = require('../utils/db.connection')
 
+async function getAllProducts() {
+    try {
+        const query = await pool.query('SELECT * FROM users');
+        return query.rows;    
+    }
+    catch {return null}
+}
+
 async function checkExistsUser(email) {
     try {
         const query = await pool.query('SELECT count(*) FROM users WHERE email = $1', [email]);
