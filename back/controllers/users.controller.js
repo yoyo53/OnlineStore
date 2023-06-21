@@ -54,7 +54,7 @@ async function logoutUserAction(request, response) {
     }
 }
 
-async function deleteUserAction(request, response) {
+async function deleteUserByTokenAction(request, response) {
     const token = request.get("Authorization");
     const id = await tokenRepo.validateToken(token);
     if (id != null) {
@@ -71,9 +71,47 @@ async function deleteUserAction(request, response) {
     }
 }
 
+async function deleteUserByIdAction(request, response) {
+    const token = request.get("Authorization");
+    const id = await tokenRepo.validateToken(token);
+    if (id != request.params.id || userRepo.isAdminUser(id)) {
+        if (await tokenRepo.deleteUserTokens(request.params.id) != null && await userRepo.deleteUser(request.params.id) != null) {
+            console.log('[',request.ip,'] DELETED User : ', request.params.id);
+            response.status(200).json({info: "user account deleted successfully", deleted_id: request.params.id});    
+        }
+        else {
+            response.status(400).json({error: "invalid request"});
+        }
+    }
+    else {
+        response.status(401).json({error: "invalid token"});
+    }
+}
+
+async function getAllUsersAction(request, response) {
+    const token = request.get("Authorization");
+    const id = await tokenRepo.validateToken(token);
+    if (id != null && await userRepo.isAdminUser(id)) {
+        const products = await productRepo.getAllProducts();
+        if (products != null) {
+            console.log('[',request.ip,'] FETCHED all products');
+            response.status(200).json(products);
+        }
+        else {
+            response.status(400).json({error: "invalid request"});
+        }
+    }
+    else {
+        response.status(401).json({error: "invalid token"});
+    }
+}
+
+
 module.exports = {
     createUserAction,
     loginUserAction,
     logoutUserAction,
-    deleteUserAction
+    deleteUserByTokenAction,
+    deleteUserByIdAction,
+    getAllUsersAction
 };
