@@ -1,96 +1,7 @@
 <template>
-  <header class="border-b border-blue-100">
-    <div
-      class="mx-auto flex h-16"
-    >
-      <div class="flex items-center gap-4">
-        <a href="#" class="flex">
-          <span class="sr-only">Logo</span>
-          <img src="..\assets\logo-black.png" alt="logo" class="logo">
-
-        </a>
-      </div>
-
-      <div class="flex flex-1 items-center justify-end gap-8">
-        <nav
-          aria-label="Global"
-          class="hidden lg:flex lg:gap-4 lg:text-xs lg:font-bold lg:uppercase lg:tracking-wide lg:text-gray-500"
-        >
-          <a
-            href="/about"
-            class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-cyan-700"
-          >
-            About
-          </a>
-          <a
-            href="/products"
-            class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-cyan-700"
-          >
-            Products
-          </a>
-
-          <a
-            href="/contact"
-            class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-cyan-700"
-          >
-            Contact
-          </a>
-        </nav>
-
-        <div class="flex items-center">
-          <div class="flex items-center border-x border-blue-100">
-            <span class="border-e border-blue-100">
-              <a
-                href="/cart"
-                class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700"
-              >
-                <svg
-                  class="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                  />
-                </svg>
-
-                <span class="sr-only">Cart</span>
-              </a>
-            </span>
-
-            <span class="border-e border-e-blue-100">
-              <a
-                href="/account"
-                class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700"
-              >
-                <svg
-                  class="h-4 w-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
-
-                <span class="sr-only"> Account </span>
-              </a>  
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+  
+  <Header />
+  
   <div class="mx-auto mt-8 max-w-xl">
     <form action="#" class="sm:flex sm:gap-4">
       <div class="sm:flex-1">
@@ -432,7 +343,7 @@
         </blockquote>
       </div>
     </div>
-  </section>
+  </section>  
   <footer class="fixed bottom-0 left-0 w-full bg-[#007EA7]">
     <div class="mx-auto max-w-screen-xl px-4 py-2 sm:px-6 lg:px-0 ">
       <div class="sm:flex sm:items-center sm:justify-between">
@@ -450,23 +361,29 @@
 
 </template>
 <script>
+  import Header from '../components/header.vue';
 
-export default {
-  name: "PageAccueilnotlog",
-  components: {},
-  props: {},
-  data() {
-    // quickfix to have components available to pass as props
-    return {};
-  },
-};
+  export default {
+    name: "PageAccueil",
+    components: {Header},
+    props: {},
+    data() {
+      // quickfix to have components available to pass as props
+      return {};
+    },
+    methods: {
+    redirectToPageSignIn() {
+      // Rediriger vers une autre page
+      this.$router.push('signIn');
+    },
+    redirectToPageSignUp() {
+      // Rediriger vers une autre page
+      this.$router.push('signUp');
+    }
+  }
+  };
 </script>
 <style scoped>
-.logo{
-  padding-top:0%;
-  width:85%;
-  margin-left: 5%;
-}
 
 img.object-cover {
 object-fit: cover;
