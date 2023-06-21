@@ -28,7 +28,7 @@
                   class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700"
                 >
                   <svg
-                    class="h-4 w-4"
+                    class="h-7 w-7"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -51,7 +51,7 @@
                   class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700"
                 >
                   <svg
-                    class="h-4 w-4"
+                    class="h-7 w-7"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
