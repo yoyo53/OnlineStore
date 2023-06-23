@@ -24,7 +24,7 @@ async function getOrdersAction(request, response) {
 async function getOrderAction(request, response) {
     const token = request.get("Authorization");
     const id = await tokenRepo.validateToken(token);
-    if (id != null && (await ordersRepository.getOrderClient(id) == id) || await userRepo.isAdminUser(id)) {
+    if (id != null && (await ordersRepository.getOrderClient(request.params.id) == id) || await userRepo.isAdminUser(id)) {
         const order = await ordersRepository.getOrderById(request.params.id);
         if (order != null) {
             console.log('[',request.ip,'] FETCHED Order : ', request.params.id);
@@ -42,7 +42,7 @@ async function getOrderAction(request, response) {
 async function getOrderProductAction(request, response) {
     const token = request.get("Authorization");
     const id = await tokenRepo.validateToken(token);
-    if (id != null && (await ordersRepository.getOrderClient(id) == id) || await userRepo.isAdminUser(id)) {
+    if (id != null && (await ordersRepository.getOrderClient(request.params.id) == id) || await userRepo.isAdminUser(id)) {
         const order = await ordersRepository.getOrderProduct(request.params.id);
         if (order != null) {
             console.log('[',request.ip,'] FETCHED Order : ', request.params.id);
@@ -61,7 +61,7 @@ async function createOrderAction(request, response) {
     const token = request.get("Authorization");
     const id = await tokenRepo.validateToken(token);
     if (id != null) {
-        const order = await ordersRepository.createOrder(request.body.user_id, request.body.status, request.body.total_price, request.body.product_list);
+        const order = await ordersRepository.createOrder(id, request.body.status, request.body.total_price, request.body.product_list);
         if (order != null) {
             console.log('[',request.ip,'] CREATED Order : ', order);
             response.status(200).json(order);
@@ -96,7 +96,7 @@ async function updateOrderStatusAction(request, response) {
 async function addOrderProductAction(request, response) {
     const token = request.get("Authorization");
     const id = await tokenRepo.validateToken(token);
-    if (id != null && (await ordersRepository.getOrderClient(id) == id) || await userRepo.isAdminUser(id)) {
+    if (id != null && (await ordersRepository.getOrderClient(request.params.id) == id) || await userRepo.isAdminUser(id)) {
         const order = await ordersRepository.addOrderProduct(request.body.order_id, request.body.product_id, request.body.quantity);
         if (order != null) {
             console.log('[',request.ip,'] UPDATED Order : ', request.params.id);
@@ -114,7 +114,7 @@ async function addOrderProductAction(request, response) {
 async function deleteOrderAction(request, response) {
     const token = request.get("Authorization");
     const id = await tokenRepo.validateToken(token);
-    if (id != null && (await ordersRepository.getOrderClient(id) == id) || await userRepo.isAdminUser(id)) {
+    if (id != null && (await ordersRepository.getOrderClient(request.params.id) == id) || await userRepo.isAdminUser(id)) {
         const order = await ordersRepository.deleteOrder(request.params.id);
         if (order != null) {
             console.log('[',request.ip,'] DELETED Order : ', request.params.id);
@@ -132,7 +132,7 @@ async function deleteOrderAction(request, response) {
 async function deleteOrderProductAction(request, response) {
     const token = request.get("Authorization");
     const id = await tokenRepo.validateToken(token);
-    if (id != null && (await ordersRepository.getOrderClient(id) == id) || await userRepo.isAdminUser(id)) {
+    if (id != null && (await ordersRepository.getOrderClient(request.params.id) == id) || await userRepo.isAdminUser(id)) {
         const order = await ordersRepository.deleteOrderProduct(request.params.id);
         if (order != null) {
             console.log('[',request.ip,'] DELETED Order : ', request.params.id);
@@ -150,7 +150,7 @@ async function deleteOrderProductAction(request, response) {
 async function getClientOrdersAction(request, response) {
     const token = request.get("Authorization");
     const id = await tokenRepo.validateToken(token);
-    if (id != null && (await ordersRepository.getOrderClient(id) == id) || await userRepo.isAdminUser(id)) {
+    if (id != null) {
         const orders = await ordersRepository.getClientOrders(id);
         if (orders != null) {
             console.log('[',request.ip,'] FETCHED Orders : ', orders);
@@ -165,6 +165,23 @@ async function getClientOrdersAction(request, response) {
     }
 }
 
+async function getClientOrdersByIdAction(request, response) {
+    const token = request.get("Authorization");
+    const id = await tokenRepo.validateToken(token);
+    if (id == request.params.id != null || await userRepo.isAdminUser(id)) {
+        const orders = await ordersRepository.getClientOrders(request.params.id);
+        if (orders != null) {
+            console.log('[',request.ip,'] FETCHED Orders : ', orders);
+            response.status(200).json(orders);
+        }
+        else {
+            response.status(400).json({error: "invalid request"});
+        }
+    }
+    else {
+        response.status(401).json({error: "invalid token"});
+    }
+}
 
 
 module.exports = {
@@ -176,6 +193,7 @@ module.exports = {
     addOrderProductAction,
     deleteOrderAction,
     deleteOrderProductAction,
-    getClientOrdersAction
+    getClientOrdersAction,
+    getClientOrdersByIdAction
 }
 
