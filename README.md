@@ -107,10 +107,11 @@ npm install
 ```
 
 \
-**Étape 3 : Configuration de l'url du back-end**
+**Étape 3 : Configuration de des paramètres du front-end**
 1. Dans le répertoire du front-end, recherchez un fichier `config.js`.
 2. Ouvrez le fichier `config.js` dans un éditeur de texte.
 3. Remplacez la valeur de la variable **api_url** par l’url de votre back-end.
+4. Remplacez la valeur de la variable **base_url** par l'url de base sur laquelle votre application sera déployée.
 
 \
 **Étape 4 : Compilation du front-end**
