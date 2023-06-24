@@ -53,14 +53,14 @@ Assurez-vous d'avoir Node.js et Git installés sur votre machine avant de commen
 2. Naviguez vers le répertoire où vous souhaitez cloner le projet.
 3. Exécutez la commande suivante pour cloner le dépôt depuis GitHub :
 ```bash
-git clone https://github.com/yoyo53/e-courtage.git
+git clone https://github.com/Cyb0nix/OnlineStore.git
 ```
 
 \
 **Étape 2 : Configuration du back-end**
 1. Accédez au répertoire du back-end :
 ```bash
-cd e-courtage/back
+cd OnlineStore/back
 ```
 2. Exécutez la commande suivante pour installer les dépendances :
 ```bash
@@ -92,14 +92,14 @@ Assurez-vous d'avoir Node.js et Git installés sur votre machine avant de commen
 2. Naviguez vers le répertoire où vous souhaitez cloner le projet.
 3. Exécutez la commande suivante pour cloner le dépôt depuis GitHub :
 ```bash
-git clone https://github.com/yoyo53/e-courtage.git
+git clone https://github.com/Cyb0nix/OnlineStore.git
 ```
 
 \
 **Étape 2 : Configuration du front-end**
 1. Accédez au répertoire du front-end :
 ```bash
-cd e-courtage/front
+cd OnlineStore/front
 ```
 2. Exécutez la commande suivante pour installer les dépendances :
 ```bash
