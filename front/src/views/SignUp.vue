@@ -1,5 +1,6 @@
 <template>
-  <header class="border-b border-blue-100">
+  <div class="flex flex-col h-full">
+    <header class="border-b border-blue-100">
       <div
         class="mx-auto flex h-16"
       >
@@ -73,25 +74,25 @@
         </div>
       </div>
   </header>
-  <section class="bg-white">
-      <div class="lg:grid lg:min-h-80 lg:grid-cols-12">
+  <section class="bg-white grow">
+      <div class="h-full">
           <main
-          class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6"
+          class="h-full flex items-center justify-center"
           >
-          <div class="form1">
+          <div class="form1 my-5 mx-10">
 
-              <div class="ml-20 mt-[50px]">
+              <div class="mx-10 mt-5 mb-5">
                   <a class="block text-blue-600" href="/">
                   <span class="sr-only">Home</span>
                   </a>
 
                   <h1
-                  class="mt-0 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
+                  class="-mt-[20px] text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
                   >
                   Welcome to Water Warriors
                 </h1>
 
-                  <form @submit.prevent="register" class="mt-[20px] grid grid-cols-6 gap-6">
+                  <form @submit.prevent="register" class="mt-[30px] grid grid-cols-6 gap-6">
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="FirstName"
@@ -113,7 +114,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="LastName"
-                        class="-ml-9 block text-sm font-medium text-gray-700"
+                        class="block text-sm font-medium text-gray-700"
                       >
                         Last Name
                       </label>
@@ -123,7 +124,7 @@
                         id="LastName"
                         name="last_name"
                         v-model="this.last_name"
-                        class="mt-1 -ml-9 w-3/4 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-10"
+                        class="mt-1 w-3/4 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-10"
                         required
                       />
                     </div>
@@ -164,7 +165,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="PasswordConfirmation"
-                        class="-ml-9 block text-sm font-medium text-gray-700"
+                        class="block text-sm font-medium text-gray-700"
                       >
                         Password Confirmation
                       </label>
@@ -174,7 +175,7 @@
                         id="PasswordConfirmation"
                         name="password_confirmation"
                         v-model="this.password_confirm"
-                        class="mt-1 -ml-9 w-3/4 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-10"
+                        class="mt-1 w-3/4 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-10"
                         required
                       />
                     </div>
@@ -192,17 +193,6 @@
                         class="mt-1 w-5/6 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-10 "
                         required
                       />
-                    </div>
-
-                    <div class="col-span-6">
-                      <p class="text-sm text-gray-500">
-                        By creating an account, you agree to our
-                        <a href="#" class="text-gray-700 underline">
-                          terms and conditions
-                        </a>
-                        and
-                        <a href="#" class="text-gray-700 underline">privacy policy</a>.
-                      </p>
                     </div>
                       
                     <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
@@ -225,7 +215,40 @@
       </div>
   </section>
 
-<Footer></Footer>
+  <footer class="bg-[#007EA7]">
+    <div class="px-4 py-2 sm:px-6 lg:px-0 ">
+      <div class="sm:flex sm:items-center sm:justify-between">
+        <div class="flex justify-center text-teal-600 sm:justify-start">
+          <router-link to="/" class="flex">
+            <span class="sr-only">Logo</span>
+            <img src="..\assets\logo-white.png" alt="logo" class="logo">
+          </router-link>
+        </div>
+
+        <p class="mt-4 text-center text-sm text-white lg:mt-0 lg:text-right">
+          Copyright &copy; 2023. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+  <footer class="fixed bottom-0 left-0 w-full bg-[#007EA7]">
+    <div class="px-4 py-2 sm:px-6 lg:px-0 ">
+      <div class="sm:flex sm:items-center sm:justify-between">
+        <div class="flex justify-center text-teal-600 sm:justify-start">
+          <router-link to="/" class="flex">
+            <span class="sr-only">Logo</span>
+            <img src="..\assets\logo-white.png" alt="logo" class="logo">
+          </router-link>
+        </div>
+
+        <p class="mt-4 text-center text-sm text-white lg:mt-0 lg:text-right">
+          Copyright &copy; 2023. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+  </div>
+
 
 </template>
 
@@ -290,12 +313,6 @@ methods: {
 <style>
 
 .form1{
-  position: absolute;
-  width: 35%;
-  height: 597px;
-  margin-left: 50%;
-  top: 18.5%;
-  
   background: #FFFFFF;
   box-shadow: -5px 5px 5px 5px rgba(0, 0, 0, 0.25);
   border-radius: 20px 20px 20px 20px;

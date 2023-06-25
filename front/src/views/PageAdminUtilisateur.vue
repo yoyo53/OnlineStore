@@ -184,9 +184,10 @@ body {
 
 .btnlogout {
     position: absolute;
-    width: 147px;
+    min-width: 100px;
+    width: 9%;
     height: 49px;
-    left: 92%;
+    left: 90%;
     top: 0.7%;
     color: white;
     font-size: 20px;
