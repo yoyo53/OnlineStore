@@ -182,7 +182,7 @@ data() {
 
 .form2{
   position: absolute;
-  width: 27%;
+  width: 30%;
   height: 500px;
   left: 50%;
   top: 50%;
