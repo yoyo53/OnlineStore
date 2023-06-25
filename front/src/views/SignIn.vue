@@ -183,7 +183,7 @@ data() {
 .form2{
   position: absolute;
   width: 27%;
-  height: 50%;
+  height: 500px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
