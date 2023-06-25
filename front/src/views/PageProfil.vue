@@ -8,7 +8,7 @@
     <p class="txt1">Password :</p>
     <p class="txt1">Phone :</p>
     <p class="txt1">Address :</p>
-
+    <router-link to="/"><button class="btnlogout">Log Out</button></router-link>
   </div>
 
 <Footer />
@@ -53,7 +53,7 @@ body {
   border-radius: 20px;
 }
 .txt{
-  margin-top: 2%;
+  margin-top: 1%;
   font-weight: 400;
   font-size: 36px;
   line-height: 44px;
@@ -66,5 +66,18 @@ body {
   margin-top: 12%;
   font-size: 20px;
   font-weight: bold;
+}
+
+.btnlogout {
+position: absolute;
+width: 147px;
+height: 49px;
+left: 50%;
+bottom: -1%;
+transform: translate(-50%, -50%);
+color: white;
+font-size: 20px;
+background: #868686;
+border-radius: 20px;
 }
 </style>
