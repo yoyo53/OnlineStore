@@ -16,18 +16,16 @@
           aria-label="Global"
           class="hidden lg:flex lg:gap-4 lg:text-xs lg:font-bold lg:uppercase lg:tracking-wide lg:text-gray-500 mr-40"
         >
-          <a
-            href="/Users"
+          <router-link to="/Users"
             class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-cyan-700"
           >
             Utilisateur
-          </a>
-          <a
-            href="/Commandes"
+          </router-link>
+          <router-link to="/Commandes"
             class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-cyan-700"
           >
             Commande
-          </a>
+          </router-link>
           </nav>
           <div class="flex items-center">
             <button class="btnlogout" @click="logout">Log Out</button>
