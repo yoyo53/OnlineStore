@@ -4,6 +4,7 @@ const productActions = require('../controllers/products.controller');
 const multer = require('multer');
 
 router.get('/list', productActions.getAllProductsAction)
+router.get('/details/:id', productActions.getProductByIdAction)
 router.get("/image/:id", productActions.getImageProductAction);
 router.post("/create", multer().single('file'), productActions.createProductAction);
 router.delete("/:id", productActions.deleteProductAction);

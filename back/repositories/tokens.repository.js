@@ -11,7 +11,7 @@ async function addUserToken(id_user, token, expiration_date) {
 async function validateToken(token) {
     try {
         const query = await pool.query('SELECT * FROM tokens WHERE token = $1 AND expiration_date > NOW()', [token]);
-        return query.rows[0]?.id ?? null;    
+        return query.rows[0]?.id_user ?? null;    
     }
     catch {return null}
 }

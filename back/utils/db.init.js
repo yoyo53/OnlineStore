@@ -9,11 +9,7 @@ async function createTables() {
             password VARCHAR(200) NOT NULL,
             firstname VARCHAR(50) NOT NULL,
             lastname VARCHAR(50) NOT NULL,
-            street_nbr VARCHAR(50),
-            street VARCHAR(50),
-            postcode VARCHAR(50),
-            city VARCHAR(50),
-            country VARCHAR(50),
+            address VARCHAR(50) NOT NULL,
             admin boolean DEFAULT false
         );
         CREATE TABLE IF NOT EXISTS tokens (
@@ -21,7 +17,7 @@ async function createTables() {
             id_user uuid NOT NULL,
             token uuid NOT NULL,
             expiration_date timestamp NOT NULL,
-            FOREIGN KEY (id_user) REFERENCES users(id)
+            FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE
         );
         CREATE TABLE IF NOT EXISTS products (
             id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -29,7 +25,7 @@ async function createTables() {
             description VARCHAR(50),
             stock integer NOT NULL,
             price integer NOT NULL,
-            image integer
+            image serial
         );
         CREATE TABLE IF NOT EXISTS orders (
             id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -37,15 +33,15 @@ async function createTables() {
             client uuid NOT NULL,
             status VARCHAR(50),
             total_price integer,
-            FOREIGN KEY (client) REFERENCES users(id)
+            FOREIGN KEY (client) REFERENCES users(id) ON DELETE CASCADE
         );
         CREATE TABLE IF NOT EXISTS product_list (
             id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
             order_id uuid NOT NULL,
             product_id uuid NOT NULL,
             quantity integer,
-            FOREIGN KEY (order_id) REFERENCES orders(id),
-            FOREIGN KEY (product_id) REFERENCES products(id)
+            FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+            FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
         );
         `);
     } 

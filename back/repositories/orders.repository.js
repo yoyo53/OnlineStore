@@ -41,19 +41,30 @@ async function getOrderProduct(order_id) {
   }
 }
 
+async function getClientCart(client_id) {
+  try {
+    const query = await pool.query(
+      "SELECT * FROM orders WHERE client = $1 AND status = 'cart'",
+      [client_id]
+    );
+    return query.rows[0] ?? 'empty';
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function createOrder(user_id, status, total_price, product_list) {
   try {
     const query = await pool.query(
-      "INSERT INTO orders (user_id, status, total_price) VALUES ($1, $2, $3) RETURNING id",
+      "INSERT INTO orders (client, status, total_price) VALUES ($1, $2, $3) RETURNING *",
       [user_id, status, total_price]
     );
-
     for (const product of product_list) {
       await addOrderProduct(query.rows[0].id, product.id, product.quantity);
     }
-    return query.rows[0]?.id ?? null;
-  } catch {
-    return null;
+    return query.rows[0] ?? null;
+  } catch (error){
+    throw error;
   }
 }
 
@@ -75,7 +86,7 @@ async function updateOrderStatus(id, status) {
       "UPDATE orders SET status = $1 WHERE id = $2",
       [status, id]
     );
-    return query.insertId;
+    return id;
   } catch {
     return null;
   }
@@ -87,17 +98,31 @@ async function deleteOrderProduct(order_id, product_id) {
       "DELETE FROM product_list WHERE order_id = $1 AND product_id = $2",
       [order_id, product_id]
     );
-    return id;
+    return product_id;
   } catch {
     return null;
   }
 }
 
+async function updateOrderProductQuantity(quantity, order_id, product_id) {
+  try {
+    await pool.query(
+      "UPDATE product_list set quantity = $1 WHERE order_id = $2 AND product_id = $3",
+      [quantity, order_id, product_id]
+    );
+    return product_id;
+  } catch {
+    return null;
+  }
+}
+
+
 async function deleteOrder(id) {
   try {
     await pool.query("DELETE FROM orders WHERE id = $1", [id]);
     return id;
-  } catch {
+  } catch (error) {
+    throw error;
     return null;
   }
 }
@@ -105,7 +130,7 @@ async function deleteOrder(id) {
 async function getClientOrders(client_id) {
   try {
     const query = await pool.query(
-      "SELECT * FROM orders WHERE client_id = $1",
+      "SELECT * FROM orders WHERE client = $1",
       [client_id]
     );
     return query.rows ?? null;
@@ -125,4 +150,6 @@ module.exports = {
   getOrderProduct,
   getOrderClient,
   getClientOrders,
+  getClientCart,
+  updateOrderProductQuantity
 };

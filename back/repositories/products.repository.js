@@ -16,10 +16,10 @@ async function getProductById(id) {
     catch {return null}
 }
 
-async function createProduct(name, description, stock, price, image) {
+async function createProduct(name, description, stock, price) {
     try {
-        const query = await pool.query('INSERT INTO products (name, description, stock, price, image) VALUES ($1, $2, $3, $4, $5) RETURNING id', [name, description, stock, price, image]);
-        return query.rows[0]?.id ?? null;    
+        const query = await pool.query('INSERT INTO products (name, description, stock, price) VALUES ($1, $2, $3, $4) RETURNING *', [name, description, stock, price, image]);
+        return query.rows[0] ?? null;    
     }
     catch {return null}
 }

@@ -9,6 +9,7 @@ router.get("/:id/products", ordersActions.getOrderProductAction);
 router.post("/", ordersActions.createOrderAction);
 router.put("/:id", ordersActions.updateOrderStatusAction);
 router.put("/:id/products", ordersActions.addOrderProductAction);
+router.put("/:id/products/quantity", ordersActions.updateOrderProductQuantityAction);
 router.delete("/:id", ordersActions.deleteOrderAction);
 router.delete("/:id/products", ordersActions.deleteOrderProductAction);
 

@@ -1,6 +1,6 @@
 const { pool } = require('../utils/db.connection')
 
-async function getAllProducts() {
+async function getAllUsers() {
     try {
         const query = await pool.query('SELECT * FROM users');
         return query.rows;    
@@ -11,7 +11,7 @@ async function getAllProducts() {
 async function checkExistsUser(email) {
     try {
         const query = await pool.query('SELECT count(*) FROM users WHERE email = $1', [email]);
-        return query.rows[0] > 0;
+        return query.rows[0]?.count > 0;
     }
     catch {return false}
 }
@@ -32,9 +32,9 @@ async function getUserById(id) {
     catch {return null}
 }
 
-async function createUser(email, password, firstname, lastname, street_nbr, street, postcode, city, country) {
+async function createUser(email, password, firstname, lastname, address) {
     try {
-        const query = await pool.query('INSERT INTO users (email, password, firstname, lastname, street_nbr, street, postcode, city, country) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id', [email, password, firstname, lastname, street_nbr, street, postcode, city, country]);
+        const query = await pool.query('INSERT INTO users (email, password, firstname, lastname, address) VALUES ($1, $2, $3, $4, $5) RETURNING id', [email, password, firstname, lastname, address]);
         return query.rows[0]?.id ?? null;        
     }
     catch {return null}
@@ -58,13 +58,14 @@ async function deleteUser(id) {
 
 async function isAdminUser(id) {
     try {
-        await pool.query('SELECT admin FROM users WHERE id = $1', [id]);
+        const query = await pool.query('SELECT admin FROM users WHERE id = $1', [id]);
         return !!query.rows[0]?.admin;    
     }
     catch {return false}
 }
 
 module.exports = {
+    getAllUsers,
     checkExistsUser,
     getUserByEmail,
     getUserById,
