@@ -1,7 +1,81 @@
 <template>
+  <header class="border-b border-blue-100">
+    <div
+      class="mx-auto flex h-16"
+    >
+      <div class="flex items-center gap-4">
+        <a href="#" class="flex">
+          <span class="sr-only">Logo</span>
+          <img src="..\assets\logo-black.png" alt="logo" class="logo">
+
+        </a>
+      </div>
+
+      <div class="flex flex-1 items-center justify-end gap-8">
+          
   
-  <Header />
+          <div class="flex items-center">
+            <div class="flex items-center border-x border-blue-100">
+                <span class="border-e border-blue-100">
+                    <div class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700">
+                         <router-link to="/" class="flex">
+                            <span class="sr-only">home</span>
+                            <img src="..\assets\home.png" alt="icon" class="icon">
+                         </router-link>
+                    </div>
+                </span>
+                <span class="border-e border-blue-100">
+                <router-link to="/signIn"
+                  class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700"
+                >
+                  <svg
+                    class="h-7 w-7"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                    />
+                  </svg>
   
+                  <span class="sr-only">Cart</span>
+                </router-link >
+              </span>
+  
+              <span class="border-e border-e-blue-100">
+                <router-link to="/signIn"
+                  class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-cyan-700"
+                >
+                  <svg
+                    class="h-7 w-7"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    />
+                  </svg>
+  
+                  <span class="sr-only"> Account </span>
+                </router-link >  
+              </span>
+              <router-link to="/signIn"><button class="btnsignin" >Sign In</button></router-link >
+              <router-link to="/signUp"><button class="btnsignup">Sign Up</button></router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+  </header>
   <div class="mx-auto mt-8 max-w-xl">
     <form action="#" class="sm:flex sm:gap-4">
       <div class="sm:flex-1">
@@ -37,7 +111,7 @@
               <div class="image-container">
                 <img :src="this.$api_url + 'products/image/' + product.id" class="h-[350px] w-full object-cover">
                 <div class="image-overlay">
-                  <button class="add-to-cart-button" @click="() => addToCart(product)">Add to Cart</button>
+                  <button class="add-to-cart-button" @click="this.$router.push('signIn')">Add to Cart</button>
                 </div>
               </div>
             </div>
@@ -268,19 +342,21 @@
         </blockquote>
       </div>
     </div>
-  </section>  
-
-  <Footer />
+  </section>
+ 
+  <Footer></Footer>
 
 </template>
 <script>
-  import Header from '../components/header.vue';
-  import Footer from '../components/footer.vue';
-  export default {
-    name: "PageAccueil",
-    components: {Header, Footer},
-    props: {},
-    data() {
+
+import Footer from '../components/footer.vue';
+
+
+export default {
+  name: "PageAccueilnotlog",
+  components: {Footer},
+  props: {},
+  data() {
       return {
         products: []
       }
@@ -294,60 +370,28 @@
           }
         });
         response = await response.json();
-        if (!response.valid) {
-          this.$router.push('/');
+        if (response.valid) {
+          if (response.admin) {
+            this.$router.push('/Users');
+          }
+          else {
+            this.$router.push('/home');
+          }
         }
       }
-      else {
-        this.$router.push('/');
-      }
     },
-
     async mounted() {
       let response = await fetch(this.$api_url + "products/list");
       this.products = await response.json();
-    },
-    methods: {
-    async addToCart(product) {
-      const token = localStorage.getItem('water_warrior_token');
-      const response = await fetch(this.$api_url + "users/cart", {
-        headers: {
-          "Authorization": token
-        }
-      });
-      const cart = await response.json();
-      let products = await fetch(this.$api_url + `orders/${cart.id}/products`, {
-            headers: {
-              "Authorization": token
-            }
-          });
-      products = await products.json();
-      let cart_product = products.find(item => item.product_id == product.id);
-      if (cart_product == null) {
-        await fetch(this.$api_url + `orders/${cart.id}/products`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": token
-          },
-          body: JSON.stringify({product_id: product.id, quantity: 1})
-        });
-      }
-      else {
-        await fetch(this.$api_url + `orders/${cart.id}/products/quantity`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": token
-          },
-          body: JSON.stringify({product_id: product.id, quantity: 1 + cart_product.quantity})
-        });
-      }
     }
-  }
-  };
+};
 </script>
 <style scoped>
+.logo{
+  padding-top:0%;
+  width:85%;
+  margin-left: 5%;
+}
 
 img.object-cover {
 object-fit: cover;
@@ -390,5 +434,32 @@ border: 1px solid #007EA7;
   border-radius: 10px;
   cursor: pointer;
 }
+.btnsignin {
+    position: absolute;
+    width: 147px;
+    height: 49px;
+    left: 39%;
+    top: 1%;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    line-height: 43px;
+    background: #007EA7;
+    border-radius: 20px;
+    
+  }
 
+  .btnsignup {
+    position: absolute;
+    width: 147px;
+    height: 49px;
+    left: 51%;
+    top: 1%;
+    color: white;
+    font-size: 20px;
+    background: #868686;
+    border-radius: 20px;
+    
+  }
 </style>
+
