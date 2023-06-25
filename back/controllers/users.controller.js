@@ -6,6 +6,7 @@ const { hashSync, compareSync } = require('bcrypt');
 async function createUserAction(request, response) {
     if (!await userRepo.checkExistsUser(request.body.email)) {
         const hashed_password = hashSync(request.body.password, 10);
+        console.log(request.body.email, hashed_password, request.body.firstname, request.body.lastname, request.body.street_nbr, request.body.street, request.body.postcode, request.body.city, request.body.country)
         const id = await userRepo.createUser(request.body.email, hashed_password, request.body.firstname, request.body.lastname, request.body.street_nbr, request.body.street, request.body.postcode, request.body.city, request.body.country);
         if (id != null) {
             console.log('[',request.ip,'] CREATED User : ', id);

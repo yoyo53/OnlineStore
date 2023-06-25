@@ -6,7 +6,7 @@ async function createTables() {
         CREATE TABLE IF NOT EXISTS users (
             id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
             email VARCHAR(50) NOT NULL,
-            password VARCHAR(50) NOT NULL,
+            password VARCHAR(200) NOT NULL,
             firstname VARCHAR(50) NOT NULL,
             lastname VARCHAR(50) NOT NULL,
             street_nbr VARCHAR(50),
@@ -14,7 +14,7 @@ async function createTables() {
             postcode VARCHAR(50),
             city VARCHAR(50),
             country VARCHAR(50),
-            admin boolean
+            admin boolean DEFAULT false
         );
         CREATE TABLE IF NOT EXISTS tokens (
             id uuid PRIMARY KEY DEFAULT gen_random_uuid(),

@@ -34,10 +34,12 @@ async function getUserById(id) {
 
 async function createUser(email, password, firstname, lastname, street_nbr, street, postcode, city, country) {
     try {
-        const query = await pool.query('INSERT INTO users (email, password, firstname, lastname, street_nbr, street, postcode, city, country) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)', [email, password, firstname, lastname, street_nbr, street, postcode, city, country]);
-        return query.insertId;        
+        console.log("test");
+        const query = await pool.query('INSERT INTO users (email, password, firstname, lastname, street_nbr, street, postcode, city, country) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id', [email, password, firstname, lastname, street_nbr, street, postcode, city, country]);
+        console.log(query);
+        return query.rows[0]?.id ?? null;        
     }
-    catch {return null}
+    catch (error) {throw error}
 }
 
 async function validateUserPassword(email, password) {

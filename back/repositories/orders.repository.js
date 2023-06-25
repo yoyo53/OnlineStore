@@ -44,14 +44,14 @@ async function getOrderProduct(order_id) {
 async function createOrder(user_id, status, total_price, product_list) {
   try {
     const query = await pool.query(
-      "INSERT INTO orders (user_id, status, total_price) VALUES ($1, $2, $3) ",
+      "INSERT INTO orders (user_id, status, total_price) VALUES ($1, $2, $3) RETURNING id",
       [user_id, status, total_price]
     );
 
     for (const product of product_list) {
-      await addOrderProduct(query.insertId, product.id, product.quantity);
+      await addOrderProduct(query.rows[0].id, product.id, product.quantity);
     }
-    return query.insertId;
+    return query.rows[0]?.id ?? null;
   } catch {
     return null;
   }
@@ -60,10 +60,10 @@ async function createOrder(user_id, status, total_price, product_list) {
 async function addOrderProduct(order_id, product_id, quantity) {
   try {
     const query = await pool.query(
-      "INSERT INTO product_list (order_id, product_id, quantity) VALUES ($1, $2, $3)",
+      "INSERT INTO product_list (order_id, product_id, quantity) VALUES ($1, $2, $3) RETURNING id",
       [order_id, product_id, quantity]
     );
-    return query.insertId;
+    return query.rows[0]?.id ?? null;
   } catch {
     return null;
   }
