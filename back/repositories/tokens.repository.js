@@ -2,7 +2,7 @@ const { pool } = require('../utils/db.connection')
 
 async function addUserToken(id_user, token, expiration_date) {
     try {
-        await pool.query('INSERT INTO tokens (token, id_user, expiration_date) VALUES ($1, $2, $3) RETURNING token', [token, id_user, expiration_date]);
+        const query = await pool.query('INSERT INTO tokens (token, id_user, expiration_date) VALUES ($1, $2, $3) RETURNING token', [token, id_user, expiration_date]);
         return query.rows[0]?.token ?? null;    
     }
     catch {return null}
