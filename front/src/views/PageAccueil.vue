@@ -24,9 +24,7 @@
         </h2>
 
         <p class="max-w-md mx-auto mt-4 text-gray-500">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
-          praesentium cumque iure dicta incidunt est ipsam, officia dolor fugit
-          natus?
+          You will find our best water guns' collection in this page ! 
         </p>
       </header>
 
