@@ -147,6 +147,7 @@ export default {
           "Authorization": token
         }
       });
+      localStorage.removeItem('water_warrior_token');
       this.$router.push('/');
     }
   }
