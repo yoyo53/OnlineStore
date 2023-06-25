@@ -25,7 +25,8 @@ async function loginUserAction(request, response) {
     const user = await userRepo.getUserByEmail(request.body.email);
     if (user != null && compareSync(request.body.password, user.password)) {
         await tokenRepo.deleteExpiredTokens();
-        if (await tokenRepo.addUserToken(user.id, uuidv4(), new Date(Date.now() + 1000 * 3600 * 24).toUTCString()) != null) {
+        const token = await tokenRepo.addUserToken(user.id, uuidv4(), new Date(Date.now() + 1000 * 3600 * 24).toUTCString());
+        if (token != null) {
             console.log('[',request.ip,'] LOGGED IN User : ', user.id);
             response.status(200).json({info: "user logged in successfully", token: token, user_id: user.id});
         }
