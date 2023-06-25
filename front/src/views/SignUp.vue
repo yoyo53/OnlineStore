@@ -83,18 +83,18 @@
           >
           <div class="form1">
 
-              <div class="ml-20 mt-[50px]">
+              <div class="ml-[60px] mt-[50px]">
                   <a class="block text-blue-600" href="/">
                   <span class="sr-only">Home</span>
                   </a>
 
                   <h1
-                  class="mt-0 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
+                  class="-mt-[20px] text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
                   >
                   Welcome to Water Warriors
                 </h1>
 
-                  <form action="#" class="mt-[20px] grid grid-cols-6 gap-6">
+                  <form action="#" class="mt-[30px] grid grid-cols-6 gap-6">
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="FirstName"
@@ -184,17 +184,6 @@
                         class="mt-1 w-5/6 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm h-10 "
                       />
                     </div>
-
-                    <div class="col-span-6">
-                      <p class="text-sm text-gray-500">
-                        By creating an account, you agree to our
-                        <a href="#" class="text-gray-700 underline">
-                          terms and conditions
-                        </a>
-                        and
-                        <a href="#" class="text-gray-700 underline">privacy policy</a>.
-                      </p>
-                    </div>
                       
                     <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
                         <button
@@ -255,9 +244,9 @@ data() {
   position: absolute;
   width: 35%;
   height: 597px;
-  margin-left: 50%;
-  top: 18.5%;
-  
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   background: #FFFFFF;
   box-shadow: -5px 5px 5px 5px rgba(0, 0, 0, 0.25);
   border-radius: 20px 20px 20px 20px;

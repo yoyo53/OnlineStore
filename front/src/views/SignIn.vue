@@ -95,7 +95,7 @@
                   Welcome to Water Warriors
                 </h1>
 
-                  <form action="#" class="mt-[80px] grid grid-cols-6 gap-6">
+                  <form action="#" class="mt-[20px] grid grid-cols-6 gap-6">
                     <div class="col-span-6">
                       <label for="Email" class="block text-sm font-medium text-gray-700">
                         Email
@@ -125,7 +125,7 @@
                       />
                     </div>
                     
-                    <div class="mt-10 col-span-6 sm:flex sm:items-center sm:gap-4">
+                    <div class="mt-0 col-span-6 sm:flex sm:items-center sm:gap-4">
                         <button
                         class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
                         >
@@ -183,9 +183,10 @@ data() {
 .form2{
   position: absolute;
   width: 27%;
-  height: 70%;
-  margin-left: 50%;
-  top: 15%;
+  height: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   background: #FFFFFF;
   box-shadow: -5px 5px 5px 5px rgba(0, 0, 0, 0.25);
   border-radius: 20px 20px 20px 20px;
