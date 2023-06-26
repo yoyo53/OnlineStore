@@ -15,9 +15,7 @@ async function getProductByIdAction(request, response) {
 }
 
 async function getAllProductsAction(request, response) {
-    console.log("test");
     const products = await productRepo.getAllProducts();
-    console.log(products);
     if (products != null) {
         console.log('[',request.ip,'] FETCHED all products');
         response.status(200).json(products);

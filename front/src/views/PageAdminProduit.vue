@@ -39,49 +39,68 @@
       </div>
   </header>
 
-  <p class="txt">Liste Utilisateur</p>
+  <p class="txt">Liste produits</p>
   <div class="profil">
-    <table class="user-table">
-      <thead>
-        <tr>
-          <th class="co">Prénom</th>
-          <th class="co">Nom</th>
-          <th class="co">Email</th>
-          <th class="co">Addresse</th>
-          <th class="co">Supprimer</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="user in this.users">
-          <td>{{ user.firstname }}</td>
-          <td>{{ user.lastname}}</td>
-          <td>{{ user.email}}</td>
-          <td>{{ user.address }}</td>
-          <td>
-            <button class="text-gray-600 transition hover:text-red-600" @click="() => deleteUser(user)">
-                <span class="sr-only">Remove item</span>
+    <form @submit.prevent="addProduct" id="product_form">
 
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-4 w-4"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                  />
-                </svg>
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>Photo du produit</th>
+            <th>Nom du produit</th>
+            <th>Description du produit</th>
+            <th>Prix</th>
+            <th>Quantité en stock</th>
+            <th>Supprimer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="product in this.products">
+            <td>
+              <img :src="this.$api_url + 'products/image/' + product.id" class="h-[200px] m-auto">  
+            </td>
+            <td>{{ product.name }} </td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.stock }}</td>
+            <td>
+              <button class="text-gray-600 transition hover:text-red-600" type="button" @click="() => deleteProduct(product)">
+                  <span class="sr-only">Remove item</span>
+
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-4 w-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                    />
+                  </svg>
+                </button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td><input type="file" @change="(event) => this.file = event.target.files[0]" required></td>
+            <td><input type="text" v-model="this.name" class="rounded-md border-gray-400 border-2" required></td>
+            <td><input type="text" v-model="this.description" class="rounded-md border-gray-400 border-2" required></td>
+            <td><input type="number" v-model="this.price" class="rounded-md border-gray-400 border-2" required></td>
+            <td><input type="number" v-model="this.stock" class="rounded-md border-gray-400 border-2" required></td>
+            <td>
+              <button class="text-gray-600 transition hover:text-red-600 rounded-md border-gray-400 border-2 px-1" type="submit">
+                Add Item
               </button>
-          </td>
-
-        </tr>
-      </tbody>
-    </table>
-
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </form>
   </div>
 </template>
 
@@ -89,12 +108,17 @@
 import Header from '../components/header.vue';
 
 export default {
-  name: "PageAdminUtilisateur",
+  name: "PageAdminProduit",
   components: {},
   props: {},
   data() {
     return {
-      users: []
+      products: [],
+      file: "",
+      name: "",
+      description: "",
+      price: 0,
+      stock: 0
     };
   },
   async beforeCreate() {
@@ -118,28 +142,49 @@ export default {
     }
   },
   async mounted() {
-    this.getUsers();
+    this.getProducts();
   },
   methods: {
-    async getUsers() {
+    async getProducts() {
       const token = localStorage.getItem('water_warrior_token');
-      const response = await fetch(this.$api_url + "users/list", {
+      const response = await fetch(this.$api_url + "products/list", {
         headers: {
           "Authorization": token
         }
       });
-      this.users = await response.json();
+      this.products = await response.json();
     },
 
-    async deleteUser(user) {
+    async deleteProduct(product) {
       const token = localStorage.getItem('water_warrior_token');
-      await fetch(this.$api_url + `users/delete/${user.id}`, {
+      await fetch(this.$api_url + `products/${product.id}`, {
         method: "DELETE",
         headers: {
           "Authorization": token
         }
       });
-      this.getUsers();
+      this.getProducts();
+    },
+
+    async addProduct() {
+      const token = localStorage.getItem('water_warrior_token');
+
+      let formData = new FormData();
+      formData.append('file', this.file);
+      formData.append('name', this.name);
+      formData.append('description', this.description);
+      formData.append('price', this.price);
+      formData.append('stock', this.stock);
+
+      await fetch(this.$api_url + "products/create", {
+        method: "POST",
+        headers: {
+          "Authorization": token
+        },
+        body: formData
+      });
+      this.getProducts();
+      document.getElementById("product_form").reset();
     },
 
     async logout() {

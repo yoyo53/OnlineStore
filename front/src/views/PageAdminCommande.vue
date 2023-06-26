@@ -16,6 +16,11 @@
           aria-label="Global"
           class="hidden lg:flex lg:gap-4 lg:text-xs lg:font-bold lg:uppercase lg:tracking-wide lg:text-gray-500 mr-40"
         >
+          <router-link to="/Products"
+            class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-cyan-700"
+          >
+            Produit
+          </router-link>
           <router-link to="/Users"
             class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-cyan-700"
           >
@@ -214,7 +219,7 @@ body {
     text-align: center;
     display: flex;
     align-items: center;
-    margin-left: 29.5%;
+    margin-left: 1em;
     font-size: 30px;
     font-weight: bold;
   }

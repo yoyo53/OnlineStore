@@ -7,6 +7,7 @@ import PageCart from '../views/PageCart.vue'
 import PageProfil from '../views/PageProfil.vue'
 import PageAdminC from '../views/PageAdminCommande.vue'
 import PageAdminU from '../views/PageAdminUtilisateur.vue'
+import PageAdminP from '../views/PageAdminProduit.vue'
 import { config } from '../../config.js'
 
 const routes = [
@@ -49,6 +50,11 @@ const routes = [
     path: '/Users',
     name: 'AdminUtilisateur',
     component: PageAdminU
+  },
+  {
+    path: '/Products',
+    name: 'AdminProduit',
+    component: PageAdminP
   }
 ]
 const router = createRouter({

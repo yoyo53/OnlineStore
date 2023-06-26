@@ -48,8 +48,8 @@ async function getClientCart(client_id) {
       [client_id]
     );
     return query.rows[0] ?? 'empty';
-  } catch (error) {
-    throw error;
+  } catch {
+    return null;
   }
 }
 
@@ -63,8 +63,8 @@ async function createOrder(user_id, status, total_price, product_list) {
       await addOrderProduct(query.rows[0].id, product.id, product.quantity);
     }
     return query.rows[0] ?? null;
-  } catch (error){
-    throw error;
+  } catch {
+    return null;
   }
 }
 
@@ -121,8 +121,7 @@ async function deleteOrder(id) {
   try {
     await pool.query("DELETE FROM orders WHERE id = $1", [id]);
     return id;
-  } catch (error) {
-    throw error;
+  } catch {
     return null;
   }
 }

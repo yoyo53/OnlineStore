@@ -13,6 +13,7 @@
   import PageProfil from "./views/PageProfil.vue";
   import PageAdminUtilisateur from "./views/PageAdminUtilisateur.vue";
   import PageAdminCommande from "./views/PageAdminCommande.vue";
+  import PageAdminProduit from "./views/PageAdminProduit.vue";
   import Header from './components/header.vue';
   
   export default {
@@ -26,7 +27,8 @@
       PageCart,
       PageProfil,
       PageAdminUtilisateur,
-      PageAdminCommande
+      PageAdminCommande,
+      PageAdminProduit
     }
   }
   </script>

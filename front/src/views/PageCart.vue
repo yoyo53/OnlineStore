@@ -214,29 +214,39 @@
         },
 
         async checkout() {
-          const token = localStorage.getItem('water_warrior_token');
-          let response = await fetch(this.$api_url + "users/cart", {
-            headers: {
-              "Authorization": token
-            }
-          });
-          response = await response.json();
-          await fetch(this.$api_url + `orders/${response.id}`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": token
-            },
-            body: JSON.stringify({status: 'paid'})
-          });
-          alert("payment successful, you will receive your commands in approximately 10 years");
-          this.$router.push('home');
+          if (this.nb_products > 0) {
+            const token = localStorage.getItem('water_warrior_token');
+            let response = await fetch(this.$api_url + "users/cart", {
+              headers: {
+                "Authorization": token
+              }
+            });
+            response = await response.json();
+            await fetch(this.$api_url + `orders/${response.id}`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": token
+              },
+              body: JSON.stringify({status: 'paid'})
+            });
+            alert("payment successful, you will receive your commands in approximately 10 years");
+            this.$router.push('home');
+          }
+          else {
+            alert("add at least one product to your cart before checkout!");
+          }
+
         }
       },
 
       computed: {
         total_price() {
           return this.cart.map(item => item.price * item.quantity).reduce((a, b) => a + b, 0);
+        },
+
+        nb_products() {
+          return this.cart.map(item => item.quantity).reduce((a, b) => a + b, 0);
         }
       }
     };
