@@ -8,7 +8,7 @@ const app = express()
 const port = process.env.PORT ?? 3000
 
 app.use(cors({
-  "origin": "https://cyb0nix.github.io/OnlineStore/",
+  "origin": "https://cyb0nix.github.io/",
   "methods": "GET,PATCH,POST,PUT,DELETE,OPTIONS",
   "allowedHeaders": "X-Requested-With,Content-Type,Authorization"
 }))
