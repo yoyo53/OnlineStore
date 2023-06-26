@@ -78,7 +78,7 @@ async function createOrderAction(request, response) {
 async function updateOrderStatusAction(request, response) {
     const token = request.get("Authorization");
     const id = await tokenRepo.validateToken(token);
-    if (id != null && await userRepo.isAdminUser(id)) {
+    if (await ordersRepository.getOrderClient(request.params.id) == id != null || await userRepo.isAdminUser(id)) {
         const order = await ordersRepository.updateOrderStatus(request.params.id, request.body.status);
         if (order != null) {
             console.log('[',request.ip,'] UPDATED Order : ', request.params.id);
